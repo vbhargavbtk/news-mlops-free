@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+*.egg-info/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables
+.env
+
+# DVC
+.dvc/cache
+.dvc/tmp
+
+# MLflow
+mlruns/
+
+# Data (if large and managed by DVC)
+data/
+models/
+
+# Build artifacts
+dist/
+build/
+*.spec
+
+# OS-specific
+.DS_Store
+Thumbs.db

@@ -1,0 +1,34 @@
+stages:
+  scrape_news:
+    cmd: python -m data_pipeline.scraper
+    deps:
+      - data_pipeline/scraper.py
+    outs:
+      - data/raw/news_data.json # Placeholder for scraped data
+  
+  process_articles:
+    cmd: python -m ml.process_articles # Assumes a script to process data
+    deps:
+      - data/raw/news_data.json
+      - ml/process_articles.py
+    params:
+      - processing.min_text_length
+    outs:
+      - data/processed/processed_news.csv
+
+  train_model:
+    cmd: python -m ml.train_categorizer # Assumes a training script
+    deps:
+      - data/processed/processed_news.csv
+      - ml/train_categorizer.py
+    params:
+      - training.epochs
+      - training.learning_rate
+    outs:
+      - models/categorizer_model.pkl
+    metrics:
+      - metrics.json:
+          cache: false
+    plots:
+      - plots/confusion_matrix.png:
+          cache: false
