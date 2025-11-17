@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pymongo
+pydantic
+python-dotenv
+newspaper3k
+transformers
+torch
+scikit-learn
+requests
+apscheduler
+mlflow
+dvc[s3]
+gunicorn
